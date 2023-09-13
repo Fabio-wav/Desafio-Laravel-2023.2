@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->date('dataNascimento');
+            $table->string('endereco');
+            $table->string('telefone');
+            $table->string('periodo');
+            $table->boolean('ehAdm');
         });
     }
 
