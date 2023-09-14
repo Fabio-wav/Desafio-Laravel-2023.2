@@ -13,7 +13,8 @@ class ProprietarioController extends Controller
      */
     public function index()
     {
-        //
+        $proprietarios = Proprietario::all();
+        return view('admin.proprietarios.index', compact('proprietarios'));
     }
 
     /**
@@ -21,7 +22,8 @@ class ProprietarioController extends Controller
      */
     public function create()
     {
-        //
+        $proprietario = new Proprietario();
+        return view('admin.proprietarios.create', compact('proprietario'));
     }
 
     /**
@@ -37,7 +39,7 @@ class ProprietarioController extends Controller
      */
     public function show(Proprietario $proprietario)
     {
-        //
+        return view ('admin.proprietarios.show', compact('proprietario'));
     }
 
     /**

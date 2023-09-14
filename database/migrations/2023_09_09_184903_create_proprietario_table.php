@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->string('foto');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('cpf')->unique();
             $table->date('dataNascimento');
             $table->string('endereco');
