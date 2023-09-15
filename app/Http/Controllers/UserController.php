@@ -24,6 +24,7 @@ class UserController extends Controller
         public function create()
         {
             $user = new User();
+           
             return view('admin.users.create', compact('user'));
         }
     
@@ -33,16 +34,9 @@ class UserController extends Controller
         public function store(Request $request)
         {
             $data = $request->all();
-    
-            if ($request->hasFile('foto')) {
-                $imagePath = $request->file('foto')->store('images/users');
-                $data['foto'] = $imagePath;
-            }
-            else {
-                $data['foto'] = null;
-            }
-    
+            $data['ehAdm'] = 0;
             User::create($data);
+            
     
             return redirect()->route('users.index')->with('success', true);
         }
@@ -52,6 +46,7 @@ class UserController extends Controller
          */
         public function show(User $user)
         {
+            dd($user);
             return view ('admin.users.show', compact('user'));
         }
     
@@ -82,5 +77,6 @@ class UserController extends Controller
             $user->delete();
             return redirect()->route('users.index')->with('sucess', true);
         }
-    }
+}
+
     

@@ -321,7 +321,7 @@ return [
         ['header' => 'GERENCIAMENTOS'],
         [
             'text' => 'Usuarios',
-            'url'  => 'admin/settings',
+            'url'  => 'users',
             'icon' => 'fas fa-fw fa-users',
         ],
         [

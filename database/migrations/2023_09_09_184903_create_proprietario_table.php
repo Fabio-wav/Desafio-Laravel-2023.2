@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nome');
-            $table->string('foto')->nullable()->change();
+            $table->string('foto')->nullable();
             $table->string('email')->unique();
             $table->string('cpf')->unique();
             $table->date('dataNascimento');

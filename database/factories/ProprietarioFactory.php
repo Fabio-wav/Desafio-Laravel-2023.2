@@ -18,7 +18,7 @@ class ProprietarioFactory extends Factory
     {
         return [
             'nome' => fake()->name(),
-            'foto' => fake()->imageUrl(),
+            'foto' => null,
             'email' => fake()->unique()->safeEmail,
             'cpf' => fake()->unique()->numerify('###########'), 
             'dataNascimento' => fake()->date,

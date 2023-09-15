@@ -13,6 +13,7 @@ class Proprietario extends Model
     protected $fillable = [
         'nome',
         'email',
+        'foto',
         'cpf',
         'dataNascimento',
         'endereco',
