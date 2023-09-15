@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nome');
-            $table->string('foto');
+            $table->string('foto')->nullable()->change();
             $table->string('email')->unique();
             $table->string('cpf')->unique();
             $table->date('dataNascimento');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('proprietario');
+        Schema::dropIfExists('proprietarios');
     }
 };

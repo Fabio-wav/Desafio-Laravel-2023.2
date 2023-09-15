@@ -31,7 +31,19 @@ class ProprietarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        if ($request->hasFile('foto')) {
+            $imagePath = $request->file('foto')->store('images/proprietarios');
+            $data['foto'] = $imagePath;
+        }
+        else {
+            $data['foto'] = null;
+        }
+
+        Proprietario::create($data);
+
+        return redirect()->route('proprietarios.index')->with('success', true);
     }
 
     /**
@@ -47,7 +59,7 @@ class ProprietarioController extends Controller
      */
     public function edit(Proprietario $proprietario)
     {
-        //
+        return view('admin.proprietarios.edit', compact('proprietario'));
     }
 
     /**
@@ -55,7 +67,10 @@ class ProprietarioController extends Controller
      */
     public function update(Request $request, Proprietario $proprietario)
     {
-        //
+        $data = $request->all();
+        $proprietario->update($data);
+
+        return redirect()->route('proprietarios.index')->with('sucess', true);
     }
 
     /**
@@ -63,6 +78,7 @@ class ProprietarioController extends Controller
      */
     public function destroy(Proprietario $proprietario)
     {
-        //
+        $proprietario->delete();
+        return redirect()->route('proprietarios.index')->with('sucess', true);
     }
 }

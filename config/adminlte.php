@@ -331,7 +331,7 @@ return [
         ],
         [
             'text' => 'Proprietarios',
-            'url'  => 'admin/settings',
+            'url'  => 'proprietarios',
             'icon' => 'fas fa-fw fa-user-circle',
         ],
         [

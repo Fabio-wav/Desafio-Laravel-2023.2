@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nome');
-            $table->foreignId('proprietario_id');
+            $table->foreignId('proprietario_id')->onDelete('cascade');
             $table->string('raca');
             $table->date('dataNascimento');
             $table->string('tratamentosRealizados');

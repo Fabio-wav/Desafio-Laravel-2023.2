@@ -1,5 +1,7 @@
-@extends('layouts.app')
 
+
+
+@extends('layouts.master')
 @section('content')
 
     @component('admin.components.create')

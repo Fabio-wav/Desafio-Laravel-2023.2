@@ -1,32 +1,31 @@
 <div class="row">
     <div class="form-group col-sm-12 col-md-4">
-        <label for="name" class="required">Nome </label>
-        <input type="string" name="name" id="name" autofocus class="form-control" required value="{{ old('name', $proprietario->name) }}">
+        <label for="nome" class="required">Nome</label>
+        <input type="text" name="nome" id="nome" autofocus class="form-control" value="{{ old('nome', $proprietario->nome ?? '') }}">
     </div>
     <div class="form-group col-sm-12 col-md-4">
-        <label for="email" class="required">E-mail </label>
-        <input type="email" name="email" id="email" class="form-control" required value="{{ old('email', $proprietario->email) }}">
+        <label for="email" class="required">E-mail</label>
+        <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $proprietario->email ?? '') }}">
     </div>
     <div class="form-group col-sm-12 col-md-4">
-        <label for="cpf" class="required">CPF </label>
-        <input type="string" name="cpf" id="cpf" class="form-control" required value="{{ old('cpf', $proprietario->cpf) }}">
+        <label for="cpf" class="required">CPF</label>
+        <input type="text" name="cpf" id="cpf" class="form-control" value="{{ old('cpf', $proprietario->cpf ?? '') }}">
     </div>
     <div class="form-group col-sm-12 col-md-4">
-        <label for="data_nascimento" class="required">Data de Nascimento </label>
-        <input type="date" name="data_nascimento" id="data_nascimento" class="form-control" required value="{{ old('data_nascimento', $proprietario->data_nascimento) }}">
+        <label for="dataNascimento" class="required">Data de Nascimento</label>
+        <input type="date" name="dataNascimento" id="dataNascimento" class="form-control" value="{{ old('dataNascimento', $proprietario->dataNascimento ?? '') }}">
     </div>
     <div class="form-group col-sm-12 col-md-4">
-        <label for="endereco" class="required">Endereço </label>
-        <input type="string" name="endereco" id="endereco" class="form-control" required value="{{ old('endereco', $proprietario->endereco) }}">
+        <label for="endereco" class="required">Endereço</label>
+        <input type="text" name="endereco" id="endereco" class="form-control" value="{{ old('endereco', $proprietario->endereco ?? '') }}">
     </div>
     <div class="form-group col-sm-12 col-md-4">
-        <label for="telefone" class="required">Telefone </label>
-        <input type="string" name="telefone" id="telefone" class="form-control" required value="{{ old('telefone', $proprietario->telefone) }}">
+        <label for="telefone">Telefone</label>
+        <input type="text" name="telefone" id="telefone" class="form-control" value="{{ old('telefone', $proprietario->telefone ?? '') }}">
     </div>
-    <label for="image" class="required">Foto </label>
-    <input type="file" name="photo" id="photo" class="form-control-file">
+    <div class="form-group col-sm-12 col-md-4">
+        <label for="foto">Foto (Opcional)</label>
+        <input type="file" name="foto" id="foto" class="form-control-file">
+
+    </div>
 </div>
-
-
-    
-

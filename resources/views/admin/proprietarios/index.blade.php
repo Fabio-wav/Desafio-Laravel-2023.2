@@ -1,5 +1,5 @@
-@extends('layouts.app') {{-- Supondo que você tenha um layout mestre chamado 'app' --}}
 
+@extends('layouts.master')
 @section('content')
     <div class="container">
         <h1>Lista de Proprietários</h1>
@@ -10,7 +10,6 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Ações</th>
