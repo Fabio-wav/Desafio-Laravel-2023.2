@@ -55,7 +55,8 @@ class AnimalController extends Controller
      */
     public function edit(Animal $animal)
     {
-        return view('admin.animais.edit', compact('animal'));
+        $proprietarios = Proprietario::all();
+        return view('admin.animais.edit', compact('animal'), compact('proprietarios'));
     }
 
     /**

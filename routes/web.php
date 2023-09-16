@@ -64,4 +64,13 @@ Route::post('/animais', [AnimalController::class, 'store'])->name('animais.store
 Route::put('/animais/{animal}', [AnimalController::class, 'update'])->name('animais.update');
 Route::delete('/animais/{animal}', [AnimalController::class, 'destroy'])->name('animais.destroy');
 //fim-animais
+
+//consultas
+Route::get('/consultas', [ConsultaController::class, 'index'])->name('consultas.index');
+Route::get('/consultas/create', [ConsultaController::class, 'create'])->name('consultas.create');
+Route::get('/consultas/{consulta}/edit', [ConsultaController::class, 'edit'])->name('consultas.edit');
+Route::get('/consultas/{consulta}', [ConsultaController::class, 'show'])->name('consulta.show');
+Route::post('/consultas', [ConsultaController::class, 'store'])->name('consultas.store');
+Route::put('/consultas/{consulta}', [ConsultaController::class, 'update'])->name('consultas.update');
+Route::delete('/consultas/{consulta}', [ConsultaController::class, 'destroy'])->name('consultas.destroy');
 Auth::routes();

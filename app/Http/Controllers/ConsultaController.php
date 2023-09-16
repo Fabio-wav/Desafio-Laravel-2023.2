@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 
 class ConsultaController extends Controller
 {
-        /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $consultas = Proprietario::all();
+        $consultas = Consulta::all();
         return view('admin.consultas.index', compact('consultas'));
     }
 
@@ -22,7 +22,7 @@ class ConsultaController extends Controller
      */
     public function create()
     {
-        $consulta = new Proprietario();
+        $consulta = new Consulta();
         return view('admin.consultas.create', compact('consulta'));
     }
 
@@ -31,8 +31,9 @@ class ConsultaController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
 
-        Proprietario::create($data);
+        Consulta::create($data);
 
         return redirect()->route('consultas.index')->with('success', true);
     }
@@ -40,7 +41,7 @@ class ConsultaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Proprietario $consulta)
+    public function show(Consulta $consulta)
     {
         return view ('admin.consultas.show', compact('consulta'));
     }
@@ -48,7 +49,7 @@ class ConsultaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Proprietario $consulta)
+    public function edit(Consulta $consulta)
     {
         return view('admin.consultas.edit', compact('consulta'));
     }
@@ -56,7 +57,7 @@ class ConsultaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Proprietario $consulta)
+    public function update(Request $request, Consulta $consulta)
     {
         $data = $request->all();
         $consulta->update($data);
@@ -67,7 +68,7 @@ class ConsultaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Proprietario $consulta)
+    public function destroy(Consulta $consulta)
     {
         $consulta->delete();
         return redirect()->route('consultas.index')->with('sucess', true);

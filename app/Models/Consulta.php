@@ -12,10 +12,17 @@ class Consulta extends Model
     protected $table = "consultas";
     protected $fillable = [
     'usuario_id',
-    'tratamento_id',
-   'animal_id,',
+    'animal_id,',
+    'tratamento',
     'dataHoraInicio',
     'daraHoraFim',
     'custo',
     ];
+
+    public function animal()
+    {
+        return $this->belongsTo(Animal::class, 'animal_id');
+    }
+
+    
 }
