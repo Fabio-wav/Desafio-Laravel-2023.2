@@ -16,4 +16,9 @@ class Animal extends Model
         'dataNascimento',
         'tratamentosRealizados',
     ];
+
+    public function proprietario()
+    {
+        return $this->belongsTo(Proprietario::class, 'proprietario_id');
+    }
 }

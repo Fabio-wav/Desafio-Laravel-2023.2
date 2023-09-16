@@ -20,5 +20,8 @@ class Proprietario extends Model
         'telefone',
     ];
 
-
+    public function animais()
+    {
+        return $this->hasMany(Animal::class);
+    }
 }

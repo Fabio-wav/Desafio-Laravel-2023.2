@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\ConsultaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,4 +54,14 @@ Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 //fim-users
+
+//animais
+Route::get('/animais', [AnimalController::class, 'index'])->name('animais.index');
+Route::get('/animais/create', [AnimalController::class, 'create'])->name('animais.create');
+Route::get('/animais/{animal}/edit', [AnimalController::class, 'edit'])->name('animais.edit');
+Route::get('/animais/{animal}', [AnimalController::class, 'show'])->name('animais.show');
+Route::post('/animais', [AnimalController::class, 'store'])->name('animais.store');
+Route::put('/animais/{animal}', [AnimalController::class, 'update'])->name('animais.update');
+Route::delete('/animais/{animal}', [AnimalController::class, 'destroy'])->name('animais.destroy');
+//fim-animais
 Auth::routes();

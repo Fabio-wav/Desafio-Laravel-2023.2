@@ -320,13 +320,13 @@ return [
         ],
         ['header' => 'GERENCIAMENTOS'],
         [
-            'text' => 'Usuarios',
+            'text' => 'Funcionários',
             'url'  => 'users',
             'icon' => 'fas fa-fw fa-users',
         ],
         [
             'text' => 'Animais',
-            'url'  => 'admin/settings',
+            'url'  => 'animais',
             'icon' => 'fas fa-fw fa-paw',
         ],
         [
@@ -336,7 +336,7 @@ return [
         ],
         [
             'text' => 'Consultas',
-            'url'  => 'admin/settings',
+            'url'  => 'consultas',
             'icon' => 'fas fa-fw fa-calendar-alt',
         ],
         

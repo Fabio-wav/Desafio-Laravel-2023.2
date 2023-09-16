@@ -34,8 +34,9 @@
                         <label for="telefone">Telefone</label>
                         <input type="text" name="telefone" id="telefone" class="form-control" value="{{ $proprietario->telefone }}" disabled>
                     </div>
-                    <img src="{{ asset('images/proprietarios/' . $proprietario->foto) }}" alt="Foto do Proprietario" class="img-fluid" style="max-height: 200px;">
-
+                    
+                    <img src="{{ asset('/storage/storage/foto_proprietarios/' . $proprietario->foto) }}" alt="Foto do Proprietario" class="img-fluid" style="max-height: 200px;">
+                    
                 </div>
             </div>
         </div>

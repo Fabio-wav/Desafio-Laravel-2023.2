@@ -33,9 +33,12 @@ class ProprietarioController extends Controller
     {
         $data = $request->all();
 
-        if ($request->hasFile('foto')) {
-            $imagePath = $request->file('foto')->store('images/proprietarios');
-            $data['foto'] = $imagePath;
+         if ($request->hasFile('foto')) {
+          //  $imagePath = $request->file('foto')->store('images/proprietarios');
+          //  $data['foto'] = $imagePath;
+          $file = $request->file('foto');
+          $file->store('public/storage/foto_proprietarios');
+          $data['foto'] = $file->hashName();
         }
         else {
             $data['foto'] = null;

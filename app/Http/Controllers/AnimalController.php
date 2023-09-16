@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proprietario;
 use App\Models\Animal;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        //
+        $animais = Animal::all();
+        return view('admin.animais.index', compact('animais'));
     }
 
     /**
@@ -21,7 +23,9 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        //
+        $animal = new Animal();
+        $proprietarios = Proprietario::all();
+        return view('admin.animais.create', compact('animal'), compact('proprietarios'));
     }
 
     /**
@@ -29,7 +33,11 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        Animal::create($data);
+
+        return redirect()->route('animais.index')->with('success', true);
     }
 
     /**
@@ -37,7 +45,9 @@ class AnimalController extends Controller
      */
     public function show(Animal $animal)
     {
-        //
+
+        $proprietarios = Proprietario::all();
+        return view ('admin.animais.show', compact('animal'), compact('proprietarios'));
     }
 
     /**
@@ -45,7 +55,7 @@ class AnimalController extends Controller
      */
     public function edit(Animal $animal)
     {
-        //
+        return view('admin.animais.edit', compact('animal'));
     }
 
     /**
@@ -53,7 +63,10 @@ class AnimalController extends Controller
      */
     public function update(Request $request, Animal $animal)
     {
-        //
+        $data = $request->all();
+        $animal->update($data);
+
+        return redirect()->route('animais.index')->with('sucess', true);
     }
 
     /**
@@ -61,6 +74,8 @@ class AnimalController extends Controller
      */
     public function destroy(Animal $animal)
     {
-        //
+        $animal->delete();
+        return redirect()->route('animais.index')->with('sucess', true);
     }
+
 }
