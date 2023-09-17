@@ -10,16 +10,16 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
+                        <th>Animal</th>
+                        <th>Funcionario</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($consultas as $consulta)
                         <tr>
-                            <td>{{ $consulta->nome }}</td>
-                            <td>{{ $consulta->email }}</td>
+                            <td>{{ $consulta->animal->nome }}</td>
+                            <td>{{ $consulta->user->name }}</td>
                             <td>
                                 <a href="{{ route('consultas.show', $consulta->id) }}" class="btn btn-info">Visualizar</a>
                                 <a href="{{ route('consultas.edit', $consulta->id) }}" class="btn btn-primary">Editar</a>

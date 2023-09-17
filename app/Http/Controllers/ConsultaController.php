@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Animal;
 use App\Models\Consulta;
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ConsultaController extends Controller
 {
@@ -22,8 +24,12 @@ class ConsultaController extends Controller
      */
     public function create()
     {
+        
         $consulta = new Consulta();
-        return view('admin.consultas.create', compact('consulta'));
+        $animais = Animal::all();
+        $users = Auth::user();
+
+        return view('/admin.consultas.create', compact('consulta', 'animais', 'users'));
     }
 
     /**
@@ -32,10 +38,9 @@ class ConsultaController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
+        $data['user_id'] = Auth::user()->id;
         Consulta::create($data);
-
-        return redirect()->route('consultas.index')->with('success', true);
+        return redirect()->route('consultas.index')->with('success', 'Consulta agendada com sucesso!');
     }
 
     /**

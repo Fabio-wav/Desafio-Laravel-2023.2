@@ -11,17 +11,22 @@ class Consulta extends Model
     use HasFactory;
     protected $table = "consultas";
     protected $fillable = [
-    'usuario_id',
-    'animal_id,',
+    'user_id',
+    'animal_id',
     'tratamento',
     'dataHoraInicio',
-    'daraHoraFim',
+    'dataHoraFim',
     'custo',
     ];
 
     public function animal()
     {
         return $this->belongsTo(Animal::class, 'animal_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     

@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('consultas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('tratamento');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('animal_id')->constrained('animais')->onDelete('cascade');
+            $table->string('tratamento');
             $table->dateTime('dataHoraInicio');
-            $table->dateTime('daraHoraFim');
+            $table->dateTime('dataHoraFim');
             $table->float('custo');
         });
     }

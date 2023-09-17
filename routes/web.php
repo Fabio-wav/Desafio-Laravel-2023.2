@@ -69,7 +69,7 @@ Route::delete('/animais/{animal}', [AnimalController::class, 'destroy'])->name('
 Route::get('/consultas', [ConsultaController::class, 'index'])->name('consultas.index');
 Route::get('/consultas/create', [ConsultaController::class, 'create'])->name('consultas.create');
 Route::get('/consultas/{consulta}/edit', [ConsultaController::class, 'edit'])->name('consultas.edit');
-Route::get('/consultas/{consulta}', [ConsultaController::class, 'show'])->name('consulta.show');
+Route::get('/consultas/{consulta}', [ConsultaController::class, 'show'])->name('consultas.show');
 Route::post('/consultas', [ConsultaController::class, 'store'])->name('consultas.store');
 Route::put('/consultas/{consulta}', [ConsultaController::class, 'update'])->name('consultas.update');
 Route::delete('/consultas/{consulta}', [ConsultaController::class, 'destroy'])->name('consultas.destroy');
