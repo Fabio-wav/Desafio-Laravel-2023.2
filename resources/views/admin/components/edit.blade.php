@@ -12,7 +12,7 @@
         </div>
         <div class="card-footer">
             <button type="submit" form="form-adicionar" class="btn btn-dark float-right">Salvar Alterações</button>
-            {{ $voltar ?? null }}
+            <a href="{{ URL::previous() }}" class="btn btn-secondary">Voltar</a>
         </div>
     </div>
 </div>

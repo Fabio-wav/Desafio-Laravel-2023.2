@@ -28,6 +28,11 @@ class Consulta extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
+    
+    public static function mesAnoConsulta($ano, $mes)
+    {
+        return self::whereYear('dataHoraInicio', $ano)->whereMonth('dataHoraInicio', $mes);
+    }
+    
     
 }

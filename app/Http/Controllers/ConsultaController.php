@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Models\Animal;
 use App\Models\Consulta;
 use Carbon\Carbon;
@@ -56,7 +56,9 @@ class ConsultaController extends Controller
      */
     public function edit(Consulta $consulta)
     {
-        return view('admin.consultas.edit', compact('consulta'));
+        $animais = Animal::all();
+        $users = User::all();
+        return view('admin.consultas.edit', compact('consulta', 'animais', 'users'));
     }
 
     /**

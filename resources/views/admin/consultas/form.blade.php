@@ -38,6 +38,6 @@
     
     <div class="form-group col-sm-12 col-md-4">
         <label for="nasc" class="form-label"></label>
-        <input type="hidden"  class="form-control" id="user_id" name="user_id" value="{{$users->nome}}" readonly>
+       
     </div>
 </div>

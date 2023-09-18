@@ -16,18 +16,18 @@
                         <label for="custo" class="required">Custo</label>
                         <input type="text" name="custo" id="custo" class="form-control" value="{{ $consulta->custo }}" disabled>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <label for="dataHoraInicio" class="required">Data Hora Inicio</label>
-                        <input type="date" name="dataHoraInicio" id="dataHoraInicio" class="form-control" value="{{ $consulta->dataHoraInicio->user_id }}" disabled>
+                        <input type="text" name="dataHoraInicio" id="dataHoraInicio" class="form-control" value="{{ $consulta->dataHoraInicio }}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="dataHoraFim" class="required">Data Hora Fim</label>
-                        <input type="date" name="dataHoraFim" id="dataHoraFim" class="form-control" value="{{ $consulta->dataHoraFim }}" disabled>
+                        <input type="text" name="dataHoraFim" id="dataHoraFim" class="form-control" value="{{ $consulta->dataHoraFim }}" disabled>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="tratamento" class="required">Tratamentos Realizados</label>
+                        <label for="tratamento" class="required">Tratamentos</label>
                         <input type="text" name="tratamento" id="tratamento" class="form-control" value="{{ $consulta->tratamento }}" disabled>
                     </div>
                 </div>

@@ -6,6 +6,8 @@ use App\Http\Controllers\ProprietarioController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\PdfController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,4 +75,6 @@ Route::get('/consultas/{consulta}', [ConsultaController::class, 'show'])->name('
 Route::post('/consultas', [ConsultaController::class, 'store'])->name('consultas.store');
 Route::put('/consultas/{consulta}', [ConsultaController::class, 'update'])->name('consultas.update');
 Route::delete('/consultas/{consulta}', [ConsultaController::class, 'destroy'])->name('consultas.destroy');
+
+Route::get('/gerar-pdf', [PdfController::class, 'criaPdf'])->name('gerar.pdf');
 Auth::routes();
