@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Consulta;
 use App\Models\Proprietario;
 use App\Models\Animal;
 use App\Http\Controllers\Controller;
@@ -36,7 +36,7 @@ class AnimalController extends Controller
         $data = $request->all();
 
         Animal::create($data);
-
+        
         return redirect()->route('animais.index')->with('success', true);
     }
 
@@ -45,9 +45,11 @@ class AnimalController extends Controller
      */
     public function show(Animal $animal)
     {
-
         $proprietarios = Proprietario::all();
-        return view ('admin.animais.show', compact('animal'), compact('proprietarios'));
+        $consultas = Consulta::where('animal_id', $animal->id)->get();
+        $tamanhoConsultas = $consultas->count();
+
+        return view ('admin.animais.show', compact('animal', 'consultas', 'tamanhoConsultas'), compact('proprietarios'));
     }
 
     /**

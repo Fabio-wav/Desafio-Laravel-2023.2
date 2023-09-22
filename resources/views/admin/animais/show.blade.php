@@ -26,17 +26,44 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="tratamentosRealizados" class="required">Tratamentos Realizados</label>
-                        <input type="text" name="tratamentosRealizados" id="tratamentosRealizados" class="form-control" value="{{ $animal->tratamentosRealizados }}" disabled>
+                    <div class="col-md-6">
+                        <h4>Tratamentos Realizados</h4>
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#consultasCollapse">Mostrar Consultas</button>
+                        <div id="consultasCollapse" class="collapse">
+                            @if ($tamanhoConsultas > 0)
+                                <ul>
+                                    @foreach ($consultas as $consulta)
+                                        @if (!empty($consulta->tratamento))
+                                            @php
+                                            $tratamentosConsulta = explode(', ', $consulta->tratamento);
+                                            @endphp
+                                            @foreach ($tratamentosConsulta as $tratamento)
+                                                <li>{{ $tratamento }}</li>
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                    @if (!empty($animal->tratamentosRealizados))
+                                        @php
+                                        $tratamentosAnimal = explode(', ', $animal->tratamentosRealizados);
+                                        @endphp
+                                        @foreach ($tratamentosAnimal as $tratamento)
+                                            <li>{{ $tratamento }}</li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            @else
+                                <p>Nenhum tratamento registrado.</p>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="card-footer">
+                <a href="{{ route('animais.edit', $animal->id) }}" class="btn btn-primary">Editar</a>
+                <a href="{{ route('animais.index') }}" class="btn btn-dark">Voltar</a>
+            </div>
         </div>
-        <div class="card-footer">
-            <a href="{{ route('animais.edit', $animal->id) }}" class="btn btn-primary">Editar</a>
-            <a href="{{ route('animais.index') }}" class="btn btn-dark">Voltar</a>
-        </div>
+        
     </div>
 </div>
 @endsection
