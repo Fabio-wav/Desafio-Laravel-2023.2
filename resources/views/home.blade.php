@@ -25,6 +25,19 @@
             </a>
         </div>
     </div>
+
+    <div class="row card-header card-outline cor-backend" style="justify-content: center">
+        <div class="col-lg-3 col-6">
+            <h2>Enviar E-mails para Proprietários</h2>
+            <form method="post" action="{{ route('enviar.emails') }}">
+                @csrf
+                <button type="submit" class="btn btn-danger"> 
+                    <i class="fas fa-envelope"></i> Enviar E-mails 
+                </button>
+            </form>
+        </div>
+    </div>
+
 @stop
 
 @section('css')

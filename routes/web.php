@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\PdfController;
-
+use App\Http\Controllers\EmailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,4 +77,32 @@ Route::put('/consultas/{consulta}', [ConsultaController::class, 'update'])->name
 Route::delete('/consultas/{consulta}', [ConsultaController::class, 'destroy'])->name('consultas.destroy');
 
 Route::get('/gerar-pdf', [PdfController::class, 'criaPdf'])->name('gerar.pdf');
+
+
 Auth::routes();
+
+Route::get('/email', function()
+{
+    return new App\Mail\ComunicaProprietarios(
+      'Carlos'
+    );
+});
+
+Route::get('/enviando-email', function()
+{
+    $email = new App\Mail\ComunicaProprietarios(
+        'Carlos'
+      );
+
+    $proprietario = (object) [
+        'email' => 'fabio@vale.com',
+        'name' => 'Fabio'
+    ];
+    \Illuminate\Support\Facades\Mail::to($proprietario)->send($email);
+    return 'Email enviado!';
+});
+
+Route::post('/enviar-emails', [EmailController::class, 'enviarEmails'])->name('enviar.emails');
+
+
+
