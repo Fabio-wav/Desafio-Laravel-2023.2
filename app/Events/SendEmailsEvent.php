@@ -14,10 +14,10 @@ class SendEmailsEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $proprietarios;
-    public function __construct($proprietarios)
+   public $teste;
+    public function __construct(String $teste)
     {
-       $this->proprietarios = $proprietarios;
+        $this->teste = $teste;
     }
 
     /**

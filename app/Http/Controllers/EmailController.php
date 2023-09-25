@@ -12,12 +12,15 @@ class EmailController extends Controller
 {
     public function enviarEmails()
     {
-        $proprietarios = Proprietario::all();
-    
-        $eventoEnviarEmail = new SendEmailsEvent(
-            $proprietarios,
-        );
-        event($eventoEnviarEmail);
+        
+        event(new SendEmailsEvent('FUNCIONOU'));
+       // $proprietarios = Proprietario::all();
+       /* foreach ($proprietarios as $indice => $proprietario) {
+            $multiplicador = $indice + 1;
+            $quando = now()->addSecond($multiplicador * 5);
+            Mail::to($proprietario['email'])->later($quando, new ComunicaProprietarios($proprietario['nome']));
+
+        } */
         return redirect()->route('home')->with('success', 'E-mails enviados com sucesso!');
     }
 }

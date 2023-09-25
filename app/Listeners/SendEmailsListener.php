@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Events\SendEmailsEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Proprietario;
+use App\Models\Proprietario;
+use App\Mail\ComunicaProprietarios;
 
 class SendEmailsListener
 {
@@ -23,12 +24,12 @@ class SendEmailsListener
      */
     public function handle(SendEmailsEvent $event)
 {
-    $proprietarios = $event->proprietarios;
+    $proprietarios = Proprietario::all();
 
     foreach ($proprietarios as $indice => $proprietario) {
         $multiplicador = $indice + 1;
         $quando = now()->addSecond($multiplicador * 5);
-        Mail::to($proprietario['email'])->later($quando, new ComunicaProprietarios($proprietario['nome']));
+        Mail::to($proprietario->email)->later($quando, new ComunicaProprietarios($proprietario['nome']));
     }
 }
 }
