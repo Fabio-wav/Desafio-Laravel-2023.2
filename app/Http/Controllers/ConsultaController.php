@@ -36,21 +36,25 @@ class ConsultaController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $dataHoraInicio = Carbon::parse($request->input('dataHoraInicio'));
-    $consultaExistente = Consulta::where('dataHoraInicio', $dataHoraInicio)->first();
-
-    if ($consultaExistente) {
-        return redirect()->back()->with('error', 'Já existe uma consulta agendada para a mesma Data e Hora de Início.');
-    }
-
+{
     $data = $request->all();
     $data['user_id'] = Auth::user()->id;
+    $consultas = Consulta::all();
+    $request->dataHoraInicio = str_replace('T', ' ', $request->dataHoraInicio);
+        $request->dataHoraFim = str_replace('T', ' ', $request->dataHoraFim);
+        foreach($consultas as $consulta){
+
+            if($request->dataHoraInicio >= $consulta->dataHoraInicio && $request->dataHoraInicio < $consulta->dataHoraFim){
+                return back()->with('message-error', 'Conflito de horário!');
+            }else if($request->dataHoraInicio <= $consulta->dataHoraInicio && $request->dataHoraFim > $consulta->dataHoraInicio){
+                return back()->with('message-error', 'Conflito de horário!');
+            }
+        }
+
+    
     Consulta::create($data);
-
     return redirect()->route('consultas.index')->with('success', 'Consulta agendada com sucesso!');
-    }
-
+}
     /**
      * Display the specified resource.
      */
