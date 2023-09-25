@@ -25,6 +25,7 @@
             </a>
         </div>
     </div>
+    @can('ehAdmin', '\App\Models\User')
 
     <div class="row card-header card-outline cor-backend" style="justify-content: center">
         <div class="col-lg-3 col-6">
@@ -37,7 +38,7 @@
             </form>
         </div>
     </div>
-
+    @endcan
 @stop
 
 @section('css')

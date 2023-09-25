@@ -35,7 +35,9 @@
                         <input type="text" name="telefone" id="telefone" class="form-control" value="{{ $proprietario->telefone }}" disabled>
                     </div>
                     
+                    @if ($proprietario->foto)
                     <img src="{{ asset('/storage/storage/foto_proprietarios/' . $proprietario->foto) }}" alt="Foto do Proprietario" class="img-fluid" style="max-height: 200px;">
+                    @endif
                     
                 </div>
             </div>

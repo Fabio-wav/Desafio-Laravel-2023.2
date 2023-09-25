@@ -8,6 +8,8 @@ use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\EmailController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,13 +50,13 @@ Route::delete('/proprietarios/{proprietario}', [ProprietarioController::class, '
 //fim-proprietarios
 
 //users
-Route::get('/users', [UserController::class, 'index'])->name('users.index');
-Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
-Route::post('/users', [UserController::class, 'store'])->name('users.store');
-Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::get('/users', [UserController::class, 'index'])->name('users.index')->can('ehAdmin', '\App\Models\User');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create')->can('ehAdmin', '\App\Models\User');
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit')->can('ehAdmin', '\App\Models\User');
+Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show')->can('ehAdmin', '\App\Models\User');
+Route::post('/users', [UserController::class, 'store'])->name('users.store')->can('ehAdmin', '\App\Models\User');
+Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update')->can('ehAdmin', '\App\Models\User');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy')->can('ehAdmin', '\App\Models\User');
 //fim-users
 
 //animais

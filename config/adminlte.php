@@ -311,7 +311,7 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
-
+        
         ['header' => 'GERENCIAMENTOS'],
         [
             'text' => 'Funcionários',

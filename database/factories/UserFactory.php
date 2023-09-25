@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'dataNascimento' => fake()->date,
             'endereco' => fake()->address,
             'telefone' => fake()->phoneNumber,
-            'periodo' => fake()->randomElement(['Manhã, Tarde, Noite']),
+            'periodo' => fake()->randomElement(['Manhã', 'Tarde', 'Noite']),
             'ehAdm' => fake()->boolean,
         ];
     }
