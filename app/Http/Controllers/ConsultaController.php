@@ -37,10 +37,18 @@ class ConsultaController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['user_id'] = Auth::user()->id;
-        Consulta::create($data);
-        return redirect()->route('consultas.index')->with('success', 'Consulta agendada com sucesso!');
+        $dataHoraInicio = Carbon::parse($request->input('dataHoraInicio'));
+    $consultaExistente = Consulta::where('dataHoraInicio', $dataHoraInicio)->first();
+
+    if ($consultaExistente) {
+        return redirect()->back()->with('error', 'Já existe uma consulta agendada para a mesma Data e Hora de Início.');
+    }
+
+    $data = $request->all();
+    $data['user_id'] = Auth::user()->id;
+    Consulta::create($data);
+
+    return redirect()->route('consultas.index')->with('success', 'Consulta agendada com sucesso!');
     }
 
     /**

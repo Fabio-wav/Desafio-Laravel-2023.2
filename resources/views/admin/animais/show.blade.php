@@ -3,7 +3,7 @@
 <div class="col-md-10 offset-md-1 col-12 mt-4">
     <div class="card card-outline card-dark">
         <div class="card-header">
-            <h3 class="card-title">Detalhes do Proprietario</h3>
+            <h3 class="card-title">Detalhes do Animal</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -30,7 +30,6 @@
                         <h4>Tratamentos Realizados</h4>
                         <button class="btn btn-link" data-toggle="collapse" data-target="#consultasCollapse">Mostrar Consultas</button>
                         <div id="consultasCollapse" class="collapse">
-                            @if ($tamanhoConsultas > 0)
                                 <ul>
                                     @foreach ($consultas as $consulta)
                                         @if (!empty($consulta->tratamento))
@@ -51,9 +50,7 @@
                                         @endforeach
                                     @endif
                                 </ul>
-                            @else
-                                <p>Nenhum tratamento registrado.</p>
-                            @endif
+                         
                         </div>
                     </div>
                 </div>

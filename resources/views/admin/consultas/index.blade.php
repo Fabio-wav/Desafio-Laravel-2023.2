@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Lista de Consultas</h1>
 
-        <a href="{{ route('consultas.create') }}" class="btn btn-success">Adicionar Proprietário</a>
+        <a href="{{ route('consultas.create') }}" class="btn btn-success">Adicionar Consulta</a>
 
         @if(count($consultas) > 0)
             <table class="table table-bordered">
