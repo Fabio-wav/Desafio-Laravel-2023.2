@@ -14,10 +14,11 @@ class SendEmailsEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-   public $teste;
-    public function __construct(String $teste)
+   public $mensagem;
+    public function __construct(String $mensagem)
     {
-        $this->teste = $teste;
+        $this->mensagem = $mensagem;
+
     }
 
     /**

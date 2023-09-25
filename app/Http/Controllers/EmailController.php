@@ -7,20 +7,26 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ComunicaProprietarios;
 use App\Models\Proprietario;
+use App\Listeners\SendEmailsListener;
 
 class EmailController extends Controller
 {
-    public function enviarEmails()
-    {
-        
-        event(new SendEmailsEvent('FUNCIONOU'));
-       // $proprietarios = Proprietario::all();
-       /* foreach ($proprietarios as $indice => $proprietario) {
-            $multiplicador = $indice + 1;
-            $quando = now()->addSecond($multiplicador * 5);
-            Mail::to($proprietario['email'])->later($quando, new ComunicaProprietarios($proprietario['nome']));
 
-        } */
+    public function escreverEmails()
+    {
+        return view('mail.proprietario.escrever-emails');
+    }
+
+    public function enviarEmails(Request $request)
+    {
+        $mensagem = $request->input('mensagem');
+        
+        // Cria uma instância do ouvinte e configura a mensagem
+
+
+        // Dispara o evento
+        event(new SendEmailsEvent($mensagem));
+
         return redirect()->route('home')->with('success', 'E-mails enviados com sucesso!');
     }
 }

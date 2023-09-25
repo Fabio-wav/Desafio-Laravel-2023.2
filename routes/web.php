@@ -81,28 +81,10 @@ Route::get('/gerar-pdf', [PdfController::class, 'criaPdf'])->name('gerar.pdf');
 
 Auth::routes();
 
-Route::get('/email', function()
-{
-    return new App\Mail\ComunicaProprietarios(
-      'Carlos'
-    );
-});
 
-Route::get('/enviando-email', function()
-{
-    $email = new App\Mail\ComunicaProprietarios(
-        'Carlos'
-      );
-
-    $proprietario = (object) [
-        'email' => 'fabio@vale.com',
-        'name' => 'Fabio'
-    ];
-    \Illuminate\Support\Facades\Mail::to($proprietario)->send($email);
-    return 'Email enviado!';
-});
 
 Route::post('/enviar-emails', [EmailController::class, 'enviarEmails'])->name('enviar.emails');
 
+Route::post('/escrever-emails', [EmailController::class, 'escreverEmails'])->name('escrever.emails');
 
 

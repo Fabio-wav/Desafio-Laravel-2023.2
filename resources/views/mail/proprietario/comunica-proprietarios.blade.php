@@ -1,5 +1,7 @@
 @component('mail::message')
-O seu e-mail foi enviado com sucesso!
+
+Olá {{$nome}}
 <br>
-Nome do proprietário: {{$nome}}
+{{$mensagem}}
+
 @endcomponent

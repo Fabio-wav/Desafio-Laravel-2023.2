@@ -14,6 +14,7 @@ class SendEmailsListener
     /**
      * Create the event listener.
      */
+
     public function __construct()
     {
         //
@@ -25,11 +26,12 @@ class SendEmailsListener
     public function handle(SendEmailsEvent $event)
 {
     $proprietarios = Proprietario::all();
-
+    $mensagem = $event->mensagem;
     foreach ($proprietarios as $indice => $proprietario) {
         $multiplicador = $indice + 1;
         $quando = now()->addSecond($multiplicador * 5);
-        Mail::to($proprietario->email)->later($quando, new ComunicaProprietarios($proprietario['nome']));
+       Mail::to($proprietario->email)->later($quando, new ComunicaProprietarios($proprietario['nome'], $mensagem));
+
     }
 }
 }

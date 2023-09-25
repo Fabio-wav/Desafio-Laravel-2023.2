@@ -12,14 +12,15 @@ use Illuminate\Queue\SerializesModels;
 class ComunicaProprietarios extends Mailable
 {
     use Queueable, SerializesModels;
-    public $nome;
+    public $nome, $mensagem;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($nome)
+    public function __construct($nome, $mensagem)
     {
         $this->nome = $nome;
+        $this->mensagem = $mensagem;
     }
 
     /**
