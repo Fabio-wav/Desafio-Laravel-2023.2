@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
+Route::middleware('auth')->group(function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //proprietarios
 Route::get('/proprietarios', [ProprietarioController::class, 'index'])->name('proprietarios.index');
@@ -81,12 +81,12 @@ Route::delete('/consultas/{consulta}', [ConsultaController::class, 'destroy'])->
 Route::get('/gerar-pdf', [PdfController::class, 'criaPdf'])->name('gerar.pdf');
 
 
+
+
+
+
+Route::post('/enviar-emails', [EmailController::class, 'enviarEmails'])->name('enviar.emails')->can('ehAdmin', '\App\Models\User');
+
+Route::post('/escrever-emails', [EmailController::class, 'escreverEmails'])->name('escrever.emails')->can('ehAdmin', '\App\Models\User');
+});
 Auth::routes();
-
-
-
-Route::post('/enviar-emails', [EmailController::class, 'enviarEmails'])->name('enviar.emails');
-
-Route::post('/escrever-emails', [EmailController::class, 'escreverEmails'])->name('escrever.emails');
-
-
